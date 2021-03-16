@@ -2486,11 +2486,10 @@
                                  data-mr="0" data-ml="0" data-element-justify="center" data-is="element"
                                  data-id="356692" data-e-id="text01" data-mod-id="text_ru" data-components="[]">
                                 <div class="element-content element-content--static element-content--vertical" style="">
-                                    <div class="element-text text-style-content text-align-inherit"><p><span
-                                            style="color: rgb(255, 255, 255);">1 набір - 3 саджанці</span>
+                                    <div class="element-text text-style-content text-align-inherit">
+                                        <p><span
+                                            style="color: rgb(255, 255, 255);">1 набір - 3 саджанці привиті</span>
                                     </p>
-                                        <p><span style="color: rgb(255, 255, 255);">трьохрічні, привиті</span>
-                                        </p>
                                         <p><span style="color: rgb(255, 255, 255);">Гарне приживання в Українському кліматі</span>
                                         </p></div>
                                 </div>
@@ -4260,15 +4259,14 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
 
 <script>
-    // Your web app's Firebase configuration
     var firebaseConfig = {
-        apiKey: "AIzaSyA8rlojYA6arVcZriYiu9AgTPaw81Ce00k",
-        authDomain: "testfire-2ff4b.firebaseapp.com",
-        databaseURL: "https://testfire-2ff4b.firebaseio.com",
-        projectId: "testfire-2ff4b",
-        storageBucket: "testfire-2ff4b.appspot.com",
-        messagingSenderId: "736635575358",
-        appId: "1:736635575358:web:fd982ae01327147471056f"
+        apiKey: "AIzaSyBgF1vvfJrlC3WaKVyC5rjjCVqylcoD8vg",
+        authDomain: "test-prod-38341.firebaseapp.com",
+        projectId: "test-prod-38341",
+        storageBucket: "test-prod-38341.appspot.com",
+        messagingSenderId: "792797179204",
+        appId: "1:792797179204:web:a4b933be57e0a64c7fbb11",
+        measurementId: "G-TNB8HM7NGC"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -4300,7 +4298,6 @@
 
         var name = form['input-name'].value;
         var phone = form['input-phone'].value;
-        console.log(name, phone);
 
         db.collection("cart").add({
             name: name,
