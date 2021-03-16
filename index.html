@@ -1621,7 +1621,7 @@
         .m_modal.show {
             content-visibility: visible;
             display: block;
-            z-index: 1
+            z-index: 1000
         }
 
         .m_modal .modal-data {
@@ -3995,35 +3995,6 @@
                                                     </div>
                                                 </form>
 
-                                                <script>
-
-                                                    document.forms.cart.addEventListener('submit', logSubmit);
-                                                    function logSubmit(event) {
-                                                        event.preventDefault();
-
-                                                        var form = document.forms.cart;
-
-                                                        var name = form['input-name'].value;
-                                                        var phone = form['input-phone'].value;
-                                                        console.log(name, phone);
-
-                                                        db.collection("cart").add({
-                                                            name: name,
-                                                            phone: phone,
-                                                            timeStamp: new Date(Date.now()).toISOString(),
-                                                            isProcessed: false,
-                                                            isFinished: false,
-                                                        })
-                                                            .then((docRef) => {
-                                                                // TODO show Thank you popup
-                                                                console.log("Document written with ID: ", docRef.id);
-                                                            })
-                                                            .catch((error) => {
-                                                                console.error("Error adding document: ", error);
-                                                            });
-
-                                                    }
-                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -4037,6 +4008,86 @@
         </div>
     </div>
 
+    <div class="m_modal m_done29631" data-is="modal" id="done-popup" data-m-id="GRID" data-mod-id="6"
+         data-components="[&quot;background&quot;]">
+        <div class="modal-data" data-contrast="light"><a class="_anchor" name="done"></a>
+            <div class="component-bg bg-color " data-type="color" data-component="background">
+                <div class="overlay " data-opacity="1"></div>
+            </div>
+            <div class="scroller" data-overlay="true">
+                <div class="modal-content width--s"><a class="close close-times"></a>
+                    <div class="layout-type-column gap-zero gap-am-zero">
+                        <div class="flexbe-row align-items-stretch justify-content-start only-row" data-item-id="1">
+                            <div class="flexbe-column gap-item only-column" data-cols="24" data-item-id="1">
+                                <div class="content-zone content-zone--vertical content-zone--single content-zone--rounded px-50 py-50 pm-50 bg-element js-adaptive-hover bg-element--hover"
+                                     data-is="zone" data-id="448623" data-e-id="zone" data-mod-id="0"
+                                     data-zone-type="modal" data-components="[&quot;bg_element&quot;]"
+                                     data-contrast="dark" data-hover-contrast="dark" data-component="bg_element">
+                                    <div class="bg-element__fill bg-element__fill--color "></div>
+                                    <div class="elements-list elements-list--vertical elements-list--free elements-list--only"
+                                         data-element-align="start" data-element-justify="center" data-direction="y"
+                                         data-elements-scope="zone">
+                                        <div class="element-item is-first-child element-item--static element-item--vertical"
+                                             data-mr="0" data-ml="0" data-element-justify="center" data-is="element"
+                                             data-id="906444" data-e-id="icon01" data-mod-id="0"
+                                             data-components="[&quot;icon&quot;]">
+                                            <div class="element-content element-content--static element-content--vertical"
+                                                 style="">
+                                                <div class="component-icon component-ico size--medium style--filled color--custom border--medium shape--round scale--contain"
+                                                     data-component="icon">
+                                                    <div class="icon-wrap">
+                                                        <img src="assets/logo.png" alt="Вітамінний сад" class="logo-img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="element-item element-item--static element-item--vertical"
+                                             data-mr="0" data-ml="0" data-element-justify="center" data-is="element"
+                                             data-id="972372" data-e-id="text01" data-mod-id="subtitle_ru"
+                                             data-components="[]">
+                                            <div class="element-content element-content--static element-content--vertical"
+                                                 style="">
+                                                <div class="element-text text-style-subtitle text-align-inherit"><p>
+                                                    Спасибо за заказ</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="element-item element-item--static element-item--vertical"
+                                             data-mr="0" data-ml="0" data-element-justify="center" data-is="element"
+                                             data-id="570332" data-e-id="text01" data-mod-id="text_ru"
+                                             data-components="[]">
+                                            <div class="element-content element-content--static element-content--vertical"
+                                                 style="">
+                                                <div class="element-text text-style-content text-align-inherit">
+                                                    <p>Ваш заказ принят в обработку.&nbsp;</p>
+                                                    <p>Мы свяжемся с вами в ближайшее время.</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="element-item is-last-child element-item--static element-item--vertical"
+                                             data-mr="0" data-ml="0" data-element-justify="center" data-is="element"
+                                             data-id="851731" data-e-id="button01" data-mod-id="single_ru"
+                                             data-components="[]">
+                                            <div class="element-content element-content--static element-content--vertical"
+                                                 style="">
+                                                <div class="buttons-holder text-position-disabled single no-price">
+                                                    <div class="button-wrapper button-1 " data-item-id="1">
+                                                        <button class="component-button close text--auto effect--opacity line_size--small weight--medium size--medium js-adaptive-hover filled rounded"
+                                                                data-action-target=""><a data-action="close"></a>
+                                                            <div class="btn-content btn-content-text icon-on-left"><span
+                                                                    class="btn-text">Готово‍</span></div>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="widget-list">
@@ -4223,6 +4274,52 @@
     firebase.initializeApp(firebaseConfig);
 
     var db = firebase.firestore();
+</script>
+
+<script>
+
+
+    var closeButtons = document.getElementsByClassName('close');
+    console.log(closeButtons);
+    for (var i=0; closeButtons.length > i; i++) {
+        console.log(closeButtons[i]);
+        closeButtons[i].addEventListener('click', hidePopup);
+    }
+
+    function hidePopup(event) {
+        event.target.closest('.m_modal').classList.remove("show");
+        console.log(event.target);
+    }
+
+
+    document.forms.cart.addEventListener('submit', logSubmit);
+    function logSubmit(event) {
+        event.preventDefault();
+
+        var form = document.forms.cart;
+
+        var name = form['input-name'].value;
+        var phone = form['input-phone'].value;
+        console.log(name, phone);
+
+        db.collection("cart").add({
+            name: name,
+            phone: phone,
+            timeStamp: new Date(Date.now()).toISOString(),
+            isProcessed: false,
+            isFinished: false,
+        })
+            .then((docRef) => {
+                window.scrollTo(0, 0);
+                var popup = document.getElementById('done-popup');
+                popup.classList.add("show");
+
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+
+    }
 </script>
 </body>
 </html>
