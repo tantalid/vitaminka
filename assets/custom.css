@@ -1,3 +1,7 @@
+h1 {
+    font-size: 1.4em;
+}
+
 .component-logo-inner {
     text-align: center;
     font-size: 0.7em;
@@ -13,7 +17,6 @@
 
 .main-logo-text {
     display: inline-block;
-    padding: 10px 0 0;
     font-size: 30px;
     font-family: Georgia, sans-serif;
     vertical-align: middle;
@@ -23,10 +26,20 @@
     .main-logo-text {
         display: none;
     }
+
+    .sale-title {
+        font-size: 35px;
+    }
 }
 
 .section-logo .main-logo-text {
     font-size: 40px;
+}
+
+.sale-title {
+    text-align: center;
+    font-size: 45px;
+    padding-bottom: 10px;
 }
 
 [data-id="873084"] .component-image__natural {

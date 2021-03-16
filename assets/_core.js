@@ -4144,10 +4144,6 @@ function _extends() {
             }), e.on(`input${this.eventId} change${this.eventId}`, e => {
                 const t = e.currentTarget, i = $(t);
                 i.attr("value", t.value), i.closest(".form-field").removeClass("is_error")
-            }), this.$form.on(`click${this.eventId}`, ".form-field-submit", () => {
-                this.$form.submit(), this.$form.find(".is_error").addClass("animate"), setTimeout(() => {
-                    this.$form.find(".is_error").removeClass("animate")
-                }, 500)
             }), this.hasCalendarField && (this.inModal || this.inCart) && setTimeout(() => {
                 this.$calendars.toArray().forEach(e => {
                     const i = $(e).data("calendar");
@@ -4906,7 +4902,7 @@ function _extends() {
 
         toResult({force: t, historyItem: e} = {}) {
             const i = t || this.validateStep();
-            return !!(t || !this.busy && i) && (null == e && (e = this.history[this.history.length - 1]), this.result = this.getResult(), this.lastHistoryItem = e, this.$form.submit(), !0)
+            return !!(t || !this.busy && i) && (null == e && (e = this.history[this.history.length - 1]), this.result = this.getResult(), this.lastHistoryItem = e, !0)
         }
 
         validateStep() {
