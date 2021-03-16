@@ -567,7 +567,7 @@ flexbe_cli.lib = {
             const t = this.$lg && this.$lg.data("lightGallery");
             t && t.destroy()
         }, require(t) {
-            $("[data-lg]").length && flexbe_cli.require(["/img/lightgallery.min.css", "/img/lg-spaced-bundle.min.js"], () => {
+            $("[data-lg]").length && flexbe_cli.require(["assets/lightgallery.min.css", "assets/lg-spaced-bundle.min.js"], () => {
                 this.loaded || (this.loaded = !0, $(document).off("click.beforeLoadedLg")), "function" == typeof t && t()
             })
         }
@@ -621,7 +621,7 @@ flexbe_cli.helpers = {
                 const t = e => {
                     const t = e.find("[data-img-id]").filter((e, t) => !$(t).closest(".swiper-slide-duplicate").length).eq(0),
                         i = t.attr("data-img-id"), l = t.attr("data-img-name");
-                    return !(!i || !l) && `/img/${i}_200/${l}`
+                    return !(!i || !l) && `assets/${i}_200/${l}`
                 };
                 l.img = t(e) || t(e.closest(".flexbe-row"))
             }
@@ -660,7 +660,7 @@ flexbe_cli.helpers = {
             const e = String(l).match(/\.(jpg|jpeg|png|gif|svg|bmp|webp)$/i);
             e && e[1] && (r = e[1])
         }
-        return (t = parseInt(t, 10)) && ["gif", "svg", "webp"].includes(r) && (t = 0), o = "/img/", o += i, t && (o += `_${t}`), o += `.${r}`, o
+        return (t = parseInt(t, 10)) && ["gif", "svg", "webp"].includes(r) && (t = 0), o = "assets/", o += i, t && (o += `_${t}`), o += `.${r}`, o
     }, async getImageProportion(e) {
         let t = e, i = +e.proportion;
         if (i && (i < 2 || i < 5 && i % 1 > 0) && (i *= 100), "string" == typeof t || !i) {
@@ -1208,7 +1208,7 @@ flexbe_cli.scroll = {
         }
     }, scrollLock: {
         loaded: !1, locked: !1, init() {
-            this.loaded || flexbe_cli.require(["/img/scroll-lock.min.js"], () => {
+            this.loaded || flexbe_cli.require(["assets/scroll-lock.min.js"], () => {
                 this.loaded = !0, scrollLock.addScrollableSelector([".scroller", ".scrollable"]), this.locked && scrollLock.disablePageScroll()
             })
         }, lock() {
@@ -3351,7 +3351,7 @@ flexbe_cli.components.classes.VideoBackground = class {
         constructor(...t) {
             super(...t);
             const {component: e} = this;
-            this.require = ["/img/swiper.v5.js"], this.is = "slider", this.swiper = null, this.sliderEl = e.querySelector(".swiper-container"), this.paginationEl = e.querySelector(".slider-pagination"), this.prevEl = e.querySelector('.slider-prev, [data-direction="prev"]'), this.nextEl = e.querySelector('.slider-next, [data-direction="next"]');
+            this.require = ["assets/swiper.v5.js"], this.is = "slider", this.swiper = null, this.sliderEl = e.querySelector(".swiper-container"), this.paginationEl = e.querySelector(".slider-pagination"), this.prevEl = e.querySelector('.slider-prev, [data-direction="prev"]'), this.nextEl = e.querySelector('.slider-next, [data-direction="next"]');
             const i = this.paginationEl && this.paginationEl.getAttribute("data-type") || "bullets";
             this.options = {
                 paginationType: i,
@@ -4095,7 +4095,7 @@ function _extends() {
         }
 
         onInit() {
-            this.formInited = !1, this.$masked = this.$form.find("[data-mask]"), this.$calendars = this.$form.find(".form-field-date__input"), this.$delivery = this.$fields.find('[data-type="delivery"]'), this.$masked.length && (this.hasMaskedField = !0, this.require.push("/img/imask.min.js")), this.$calendars.length && (this.hasCalendarField = !0, this.require.push("/img/scroll-lock/scroll-lock.min.js"), this.require.push("/img/calendar.js?v2.3", "/img/calendar.min.css?v2.3")), this.captcha && this.captcha.enabled && this.require.push(`https://www.google.com/recaptcha/api.js?render=explicit&hl=${flexbe_cli.vars._group.language}`), this.$delivery.length && (this.hasDelivery = !0)
+            this.formInited = !1, this.$masked = this.$form.find("[data-mask]"), this.$calendars = this.$form.find(".form-field-date__input"), this.$delivery = this.$fields.find('[data-type="delivery"]'), this.$masked.length && (this.hasMaskedField = !0, this.require.push("assets/imask.min.js")), this.$calendars.length && (this.hasCalendarField = !0, this.require.push("assets/scroll-lock/scroll-lock.min.js"), this.require.push("assets/calendar.js?v2.3", "assets/calendar.min.css?v2.3")), this.captcha && this.captcha.enabled && this.require.push(`https://www.google.com/recaptcha/api.js?render=explicit&hl=${flexbe_cli.vars._group.language}`), this.$delivery.length && (this.hasDelivery = !0)
         }
 
         onLoad() {
@@ -4659,7 +4659,7 @@ function _extends() {
         }
 
         onInit() {
-            this.$masked = this.$form.find("[data-mask]"), this.require = [], this.$masked.length && (this.needInitMasks = !0, this.require.push("/img/imask.min.js?v1")), this.$calendars = this.$form.find(".form-field-date__input"), this.$calendars.length && (this.needInitCalendar = !0, this.require.push("/img/scroll-lock.min.js"), this.require.push("/img/calendar.js", "/img/calendar.min.css?v2.3")), this.captcha && this.captcha.enabled && this.require.push("https://www.google.com/recaptcha/api.js?render=explicit")
+            this.$masked = this.$form.find("[data-mask]"), this.require = [], this.$masked.length && (this.needInitMasks = !0, this.require.push("assets/imask.min.js?v1")), this.$calendars = this.$form.find(".form-field-date__input"), this.$calendars.length && (this.needInitCalendar = !0, this.require.push("assets/scroll-lock.min.js"), this.require.push("assets/calendar.js", "assets/calendar.min.css?v2.3")), this.captcha && this.captcha.enabled && this.require.push("https://www.google.com/recaptcha/api.js?render=explicit")
         }
 
         onLoad() {
@@ -5623,7 +5623,7 @@ function _extends() {
         constructor(...e) {
             super(...e);
             const {component: i, $component: s} = this;
-            this.is = "cards", this.mode = i.getAttribute("data-mode"), "slider" === this.mode && (this.require = ["/img/swiper.v5.js"], this.$cardsRoot = s.closest(".flexbe-cards-root"), this.$slider = this.$cardsRoot.find(".swiper-container"), this.$pagination = this.$cardsRoot.find(".slider-pagination--cards"), this.$navigation = this.$cardsRoot.find(".slider-button--cards"), this.$swiperHelper = this.$cardsRoot.find(".swiper-mobile-helper"), this.$flexbeCardsSlider = this.$cardsRoot.find(".flexbe-cards-slider"), this.$flexbeCards = this.$cardsRoot.find(".flexbe-cards"), this.$flexbeCard = this.$cardsRoot.find(".flexbe-card"), this.$flexbeCardsWrapper = this.$cardsRoot.find(".flexbe-cards-wrapper "), this.sliderResponsive = this.$slider.attr("data-slider-responsive-mode"))
+            this.is = "cards", this.mode = i.getAttribute("data-mode"), "slider" === this.mode && (this.require = ["assets/swiper.v5.js"], this.$cardsRoot = s.closest(".flexbe-cards-root"), this.$slider = this.$cardsRoot.find(".swiper-container"), this.$pagination = this.$cardsRoot.find(".slider-pagination--cards"), this.$navigation = this.$cardsRoot.find(".slider-button--cards"), this.$swiperHelper = this.$cardsRoot.find(".swiper-mobile-helper"), this.$flexbeCardsSlider = this.$cardsRoot.find(".flexbe-cards-slider"), this.$flexbeCards = this.$cardsRoot.find(".flexbe-cards"), this.$flexbeCard = this.$cardsRoot.find(".flexbe-card"), this.$flexbeCardsWrapper = this.$cardsRoot.find(".flexbe-cards-wrapper "), this.sliderResponsive = this.$slider.attr("data-slider-responsive-mode"))
         }
 
         onLoad() {
