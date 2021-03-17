@@ -62,6 +62,100 @@ h1 {
     background-color: #E3A024;
 }
 
+[data-e-id=text01][data-id="107236"] .element-text.super-sale-top {
+    position: relative;
+    padding: 60px 10px 30px 10px;
+}
+.super-sale-top .price {
+    display: inline-block;
+    position: relative;
+    background-color: red;
+    padding: 15px;
+    margin-right: 50px;
+    font-style: italic;
+    line-height: 1;
+    z-index: 10;
+}
+.super-sale-top .old-price {
+    display: inline-block;
+    position: absolute;
+    bottom: 101px;
+    left: 50%;
+    margin-left: 62px;
+    padding: 8px;
+    font-size: 0.6em;
+    line-height: 0.8em;
+    color: #f5d463;
+    overflow: hidden;
+    background-color: red;
+    font-style: italic;
+}
+.super-sale-top .old-price:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    height: 4px;
+    width: 200%;
+    background-color: #000000;
+    transform: rotate(-18deg);
+    z-index: 5;
+    left: -54%;
+    top: 50%;
+}
+.super-sale-top .sale-percentage {
+    display: inline-block;
+    position: absolute;
+    top: 53px;
+    left: 50%;
+    height: 90px;
+    width: 90px;
+    margin-left: 155px;
+    background-color: red;
+    font-size: 0.4em;
+    line-height: 1;
+    border-radius: 50%;
+    padding: 15px 0 0;
+    text-align: center;
+}
+.super-sale-top .sale-percentage__number {
+    font-size: 1.3em;
+    padding-bottom: 8px;
+    font-family: Helvetica, sans-serif, sans-serif;
+}
+.super-sale-top .sale-percentage__text {
+    font-size: 0.9em;
+}
+
+@media screen and (max-width: 767px) {
+    [data-e-id=text01][data-id="107236"] .element-text.super-sale-top {
+        padding: 40px 10px 20px;
+    }
+    .super-sale-top .price {
+        margin-right: 95px;
+    }
+    .super-sale-top .old-price {
+        bottom: 73px;
+        margin-left: 22px;
+    }
+    .super-sale-top .sale-percentage {
+        top: 44px;
+        margin-left: 89px;
+        height: 60px;
+        width: 60px;
+        padding: 9px 0 0;
+    }
+    .super-sale-top .sale-percentage__number {
+        padding-bottom: 4px;
+    }
+}
+
+/*@media screen and (max-width: 360px) {
+    .super-sale-top .sale-percentage {
+        display: none;
+    }
+}*/
+
+
 [data-id="873084"] .component-image__natural {
     display: block !important;
     position: absolute;
