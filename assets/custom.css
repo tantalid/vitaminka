@@ -70,7 +70,7 @@ h1 {
     display: inline-block;
     position: relative;
     background-color: red;
-    padding: 15px;
+    padding: 4px;
     margin-right: 50px;
     font-style: italic;
     line-height: 1;
@@ -79,9 +79,9 @@ h1 {
 .super-sale-top .old-price {
     display: inline-block;
     position: absolute;
-    bottom: 101px;
+    bottom: 78px;
     left: 50%;
-    margin-left: 62px;
+    margin-left: 57px;
     padding: 8px;
     font-size: 0.6em;
     line-height: 0.8em;
@@ -134,11 +134,11 @@ h1 {
         margin-right: 95px;
     }
     .super-sale-top .old-price {
-        bottom: 73px;
-        margin-left: 22px;
+        bottom: 55px;
+        margin-left: 12px;
     }
     .super-sale-top .sale-percentage {
-        top: 44px;
+        top: 34px;
         margin-left: 89px;
         height: 60px;
         width: 60px;
