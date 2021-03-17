@@ -30,6 +30,19 @@ h1 {
     .sale-title {
         font-size: 35px;
     }
+
+    .br-on-mobile {
+        display: inline-block;
+    }
+}
+
+[data-id="286696"] {
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 15px;
+}
+
+.form-field-text__input:invalid + .border {
+    background-color: red;
 }
 
 .section-logo .main-logo-text {

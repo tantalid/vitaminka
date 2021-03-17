@@ -3424,8 +3424,12 @@
                                          data-e-id="text01" data-mod-id="title_ru" data-components="[]">
                                         <div class="element-content element-content--static element-content--vertical"
                                              style="">
-                                            <div class="element-text text-style-title text-align-inherit"><p><span
-                                                    style="color: rgb(227, 160, 36);">399 грн за 3 саджанці</span></p>
+                                            <div class="element-text text-style-title text-align-inherit">
+                                                <p>
+                                                    <span style="color: rgb(227, 160, 36);">399 грн за
+                                                        <span class="br-on-mobile">3 саджанці</span>
+                                                    </span>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -3508,7 +3512,7 @@
                                  data-mr="0" data-ml="0" data-element-justify="center" data-is="element"
                                  data-id="408302" data-e-id="text01" data-mod-id="subtitle_ru" data-components="[]">
                                 <div class="element-content element-content--static element-content--vertical" style="">
-                                    <div class="element-text text-style-subtitle text-align-inherit"><p>1000+ довольних
+                                    <div class="element-text text-style-subtitle text-align-inherit"><p>1000+ задоволених
                                         клієнтів за 2 роки</p></div>
                                 </div>
                             </div>
@@ -4174,19 +4178,14 @@
 
 <script>
 
-
     var closeButtons = document.getElementsByClassName('close');
-    console.log(closeButtons);
     for (var i=0; closeButtons.length > i; i++) {
-        console.log(closeButtons[i]);
         closeButtons[i].addEventListener('click', hidePopup);
     }
 
     function hidePopup(event) {
         event.target.closest('.m_modal').classList.remove("show");
-        console.log(event.target);
     }
-
 
     document.forms.cart.addEventListener('submit', logSubmit);
     function logSubmit(event) {
@@ -4205,10 +4204,10 @@
             isFinished: false,
         })
             .then((docRef) => {
-                window.scrollTo(0, 0);
+                /*window.scrollTo(0, 0);
                 var popup = document.getElementById('done-popup');
-                popup.classList.add("show");
-
+                popup.classList.add("show");*/
+                window.location.assign('http://' + document.location.host + "/thanks");
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
