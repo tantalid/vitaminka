@@ -3931,7 +3931,7 @@
         </div>
     </div>
 
-    <div class="m_modal m_done29631" data-is="modal" id="done-popup" data-m-id="GRID" data-mod-id="6"
+    <div class="m_modal m_done29631" data-is="modal" id="wait-popup" data-m-id="GRID" data-mod-id="6"
          data-components="[&quot;background&quot;]">
         <div class="modal-data" data-contrast="light"><a class="_anchor" name="done"></a>
             <div class="component-bg bg-color " data-type="color" data-component="background">
@@ -3971,7 +3971,7 @@
                                             <div class="element-content element-content--static element-content--vertical"
                                                  style="">
                                                 <div class="element-text text-style-subtitle text-align-inherit"><p>
-                                                    Спасибо за заказ</p></div>
+                                                    Будь ласка зачекайте</p></div>
                                             </div>
                                         </div>
                                         <div class="element-item element-item--static element-item--vertical"
@@ -3981,8 +3981,8 @@
                                             <div class="element-content element-content--static element-content--vertical"
                                                  style="">
                                                 <div class="element-text text-style-content text-align-inherit">
-                                                    <p>Ваш заказ принят в обработку.&nbsp;</p>
-                                                    <p>Мы свяжемся с вами в ближайшее время.</p></div>
+                                                    <p>Ваше замовлення вже було прийнято до обробки.</p>
+                                                    <p>Ми зателефонуємо вам у найближчий час.</p></div>
                                             </div>
                                         </div>
                                         <div class="element-item is-last-child element-item--static element-item--vertical"
@@ -4177,6 +4177,7 @@
 <script async="" src="assets/scroll-lock.min.js"></script>
 <script async="" src="assets/swiper.v5.js"></script>
 <script async="" src="assets/anime.min.js"></script>
+<script src="assets/imask.min.js"></script>
 
 
 <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
@@ -4202,6 +4203,12 @@
 
 <script>
 
+    var phoneMask = IMask(
+        document.getElementById('input-phone'), {
+            mask: '+{38}(000)000-00-00'
+        });
+
+
     var closeButtons = document.getElementsByClassName('close');
     for (var i=0; closeButtons.length > i; i++) {
         closeButtons[i].addEventListener('click', hidePopup);
@@ -4211,6 +4218,7 @@
         event.target.closest('.m_modal').classList.remove("show");
     }
 
+    // Form submit
     document.forms.cart.addEventListener('submit', logSubmit);
     function logSubmit(event) {
         event.preventDefault();
@@ -4219,18 +4227,34 @@
 
         var name = form['input-name'].value;
         var phone = form['input-phone'].value;
-
-        db.collection("cart").add({
+        var order = {
             name: name,
             phone: phone,
             timeStamp: new Date(Date.now()).toISOString(),
             isProcessed: false,
             isFinished: false,
-        })
+        };
+
+        let orders = localStorage.getItem('orders');
+        orders = orders ? JSON.parse(orders) : [];
+
+        if (orders.length) {
+            let last = orders[orders.length-1];
+            let lastTimeStamp = Date.parse(last.timeStamp);
+            let currentDate = Date.now();
+            if (currentDate - lastTimeStamp < 20 * 1000 * 60) {
+                window.scrollTo(0, 0);
+                var popup = document.getElementById('wait-popup');
+                popup.classList.add("show");
+
+                return;
+            }
+        }
+
+        db.collection("cart").add(order)
             .then((docRef) => {
-                /*window.scrollTo(0, 0);
-                var popup = document.getElementById('done-popup');
-                popup.classList.add("show");*/
+                orders.push(order);
+                localStorage.setItem('orders', JSON.stringify(orders));
                 window.location.assign('http://' + document.location.host + "/thanks");
             })
             .catch((error) => {
