@@ -3743,8 +3743,7 @@
                                                     Встигни придбати
                                                     <span class="br-on-xs text-marker">3 саджанці</span>
                                                     <br>
-                                                    за ціною
-                                                    <span class="text-marker">одного</span>
+                                                   <span class="text-marker">за ціною одного</span>
                                                 </p>
                                                 <!--<p>*Один
                                                 набір - <span style="color: #f6b91f;">3 саджанці <span
@@ -3888,7 +3887,7 @@
                                                                            data-required="true"
                                                                            id="input-phone"
                                                                            required="">
-                                                                    <hr class="border">
+                                                                    <hr id="input-phone-border" class="border">
                                                                     <label class="form-field-title">Телефон *</label>
                                                                 </div>
                                                                 <div class="error"><span class="error-text"></span>
@@ -4202,66 +4201,80 @@
 </script>
 
 <script>
-
-    var phoneMask = IMask(
-        document.getElementById('input-phone'), {
-            mask: '+{38}(000)000-00-00'
-        });
-
-
-    var closeButtons = document.getElementsByClassName('close');
-    for (var i=0; closeButtons.length > i; i++) {
-        closeButtons[i].addEventListener('click', hidePopup);
-    }
-
-    function hidePopup(event) {
-        event.target.closest('.m_modal').classList.remove("show");
-    }
-
-    // Form submit
-    document.forms.cart.addEventListener('submit', logSubmit);
-    function logSubmit(event) {
-        event.preventDefault();
-
-        var form = document.forms.cart;
-
-        var name = form['input-name'].value;
-        var phone = form['input-phone'].value;
-        var order = {
-            name: name,
-            phone: phone,
-            timeStamp: new Date(Date.now()).toISOString(),
-            isProcessed: false,
-            isFinished: false,
-        };
-
-        let orders = localStorage.getItem('orders');
-        orders = orders ? JSON.parse(orders) : [];
-
-        if (orders.length) {
-            let last = orders[orders.length-1];
-            let lastTimeStamp = Date.parse(last.timeStamp);
-            let currentDate = Date.now();
-            if (currentDate - lastTimeStamp < 20 * 1000 * 60) {
-                window.scrollTo(0, 0);
-                var popup = document.getElementById('wait-popup');
-                popup.classList.add("show");
-
-                return;
-            }
-        }
-
-        db.collection("cart").add(order)
-            .then((docRef) => {
-                orders.push(order);
-                localStorage.setItem('orders', JSON.stringify(orders));
-                window.location.assign('http://' + document.location.host + "/thanks");
+    document.addEventListener("DOMContentLoaded", function () {
+        var phoneComplete = false;
+        var phoneMask = IMask(
+            document.getElementById('input-phone'), {
+                mask: '+{38}(000)000-00-00'
             })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
+            .on('accept', function() {
+                phoneComplete = false;
+                document.getElementById('input-phone-border').style.backgroundColor = 'red';
+            })
+            .on('complete', function() {
+                phoneComplete = true;
+                document.getElementById('input-phone-border').style.backgroundColor = '#272727';
             });
 
-    }
+
+        var closeButtons = document.getElementsByClassName('close');
+        for (var i = 0; closeButtons.length > i; i++) {
+            closeButtons[i].addEventListener('click', hidePopup);
+        }
+
+        function hidePopup(event) {
+            event.target.closest('.m_modal').classList.remove("show");
+        }
+
+        // Form submit
+        document.forms.cart.addEventListener('submit', logSubmit);
+
+        function logSubmit(event) {
+            event.preventDefault();
+            if (!phoneComplete) {
+                return;
+            }
+
+            var form = document.forms.cart;
+
+            var name = form['input-name'].value;
+            var phone = form['input-phone'].value;
+            var order = {
+                name: name,
+                phone: phone,
+                timeStamp: new Date(Date.now()).toISOString(),
+                isProcessed: false,
+                isFinished: false,
+            };
+
+            var orders = localStorage.getItem('orders');
+            orders = orders ? JSON.parse(orders) : [];
+
+            if (orders.length) {
+                var last = orders[orders.length - 1];
+                var lastTimeStamp = Date.parse(last.timeStamp);
+                var currentDate = Date.now();
+                if (currentDate - lastTimeStamp < 20 * 1000 * 60) {
+                    window.scrollTo(0, 0);
+                    var popup = document.getElementById('wait-popup');
+                    popup.classList.add("show");
+
+                    return;
+                }
+            }
+
+            db.collection("cart").add(order)
+                .then((docRef) => {
+                    orders.push(order);
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    window.location.assign('http://' + document.location.host + "/thanks");
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+
+        }
+    });
 </script>
 </body>
 </html>
