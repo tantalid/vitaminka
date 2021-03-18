@@ -35,6 +35,12 @@ h1 {
         display: inline-block;
     }
 }
+@media screen and (max-width: 320px) {
+
+    .br-on-xs {
+        display: inline-block;
+    }
+}
 
 [data-id="286696"] {
     background-color: rgba(0, 0, 0, 0.55);
@@ -62,11 +68,15 @@ h1 {
     background-color: #E3A024;
 }
 
-[data-e-id=text01][data-id="107236"] .element-text.super-sale-top {
+.super-sale {
     position: relative;
     padding: 60px 10px 30px 10px;
+    font-size: 48px;
+    line-height: 1.2;
+    text-align: center;
+    margin-right: 11%;
 }
-.super-sale-top .price {
+.super-sale .price {
     display: inline-block;
     position: relative;
     background-color: red;
@@ -76,13 +86,14 @@ h1 {
     line-height: 1;
     z-index: 10;
 }
-.super-sale-top .old-price {
+.super-sale .old-price {
     display: inline-block;
     position: absolute;
     bottom: 78px;
+    width: 118px;
     left: 50%;
     margin-left: 57px;
-    padding: 8px;
+    padding: 5px;
     font-size: 0.6em;
     line-height: 0.8em;
     color: #f5d463;
@@ -90,7 +101,7 @@ h1 {
     background-color: red;
     font-style: italic;
 }
-.super-sale-top .old-price:after {
+.super-sale .old-price:after {
     content: '';
     display: inline-block;
     position: absolute;
@@ -102,7 +113,7 @@ h1 {
     left: -54%;
     top: 50%;
 }
-.super-sale-top .sale-percentage {
+.super-sale .sale-percentage {
     display: inline-block;
     position: absolute;
     top: 53px;
@@ -117,43 +128,83 @@ h1 {
     padding: 15px 0 0;
     text-align: center;
 }
-.super-sale-top .sale-percentage__number {
+.super-sale .sale-percentage__number {
     font-size: 1.3em;
     padding-bottom: 8px;
     font-family: Helvetica, sans-serif, sans-serif;
 }
-.super-sale-top .sale-percentage__text {
+.super-sale .sale-percentage__text {
     font-size: 0.9em;
 }
 
 @media screen and (max-width: 767px) {
-    [data-e-id=text01][data-id="107236"] .element-text.super-sale-top {
+    .super-sale {
         padding: 40px 10px 20px;
+        font-size: 34px;
+        margin-right: 6%;
     }
-    .super-sale-top .price {
+    .super-sale .price {
         margin-right: 95px;
     }
-    .super-sale-top .old-price {
+    .super-sale .old-price {
+        width: auto;
         bottom: 55px;
         margin-left: 12px;
     }
-    .super-sale-top .sale-percentage {
+    .super-sale .sale-percentage {
         top: 34px;
-        margin-left: 89px;
+        margin-left: 83px;
         height: 60px;
         width: 60px;
         padding: 9px 0 0;
     }
-    .super-sale-top .sale-percentage__number {
+    .super-sale .sale-percentage__number {
         padding-bottom: 4px;
     }
 }
-
-/*@media screen and (max-width: 360px) {
-    .super-sale-top .sale-percentage {
-        display: none;
+@media screen and (max-width: 330px) {
+    .super-sale {
+        padding: 40px 10px 20px;
+        font-size: 28px;
     }
-}*/
+
+    .super-sale .old-price {
+        bottom: 53px;
+        margin-left: 0;
+        width: auto;
+    }
+    .super-sale .sale-percentage {
+        margin-left: 55px;
+        padding-top: 13px;
+    }
+    .super-sale .old-price:after {
+        height: 2px;
+    }
+}
+
+.timer2 {
+    padding: 5%;
+    background: rgba(0,0,0,0.45);
+    border-radius: 35px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+    .timer2 {
+        max-width: initial;
+    }
+}
+
+.text-marker {
+    display: inline-block;
+    background-color: red;
+    color: #FFFFFF;
+    padding: 3px;
+    font-style: italic;
+    line-height: 1;
+    font-weight: bold;
+    font-family: Arial;
+}
 
 
 [data-id="873084"] .component-image__natural {
